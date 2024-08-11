@@ -1,0 +1,93 @@
+<div class="match-container flex justify-between w-full relative text-gg_white">
+  <div class="match-container--left">
+    <div class="player-container flex flex-col h-full justify-between">
+      @if (loading()) {
+        <ng-container *ngTemplateOutlet="skeletonLeftContainer"></ng-container>
+      } @else {
+        <div class="badge-container absolute flex content-evenly gap-2">
+          @for (badge of badges(); track badge) {
+            <img
+              [src]="'match/badges/badge_' + (badge?.includes('_') ? getBadgeUrlWithFileFormat(badge) : badge + '.svg')"
+            />
+          }
+        </div>
+        <ng-container *ngTemplateOutlet="playerTemplate; context: { player: playerOne() }"></ng-container>
+        <ng-container *ngTemplateOutlet="playerTemplate; context: { player: playerTwo() }"></ng-container>
+      }
+    </div>
+  </div>
+  <div class="match-container--right">
+    <div
+      class="flex flex-col h-full text-right"
+      [ngClass]="pastMatch() ? 'score-container justify-between' : 'date-container'"
+    >
+      @if (loading()) {
+        <ng-container *ngTemplateOutlet="skeletonRightContainer"></ng-container>
+      } @else {
+        @if (pastMatch()) {
+          <ng-container *ngTemplateOutlet="scoreTemplate; context: { player: playerOne() }"></ng-container>
+          <ng-container *ngTemplateOutlet="scoreTemplate; context: { player: playerTwo() }"></ng-container>
+        } @else {
+          <div class="time font-semibold">
+            {{ getTimeFromDate(upcomingDateTime()) }}
+          </div>
+          <div class="date flex flex-col flex-1 justify-center font-bold text-gg_light_3">
+            {{ getMonthFromDate(upcomingDateTime()) }}
+          </div>
+        }
+      }
+    </div>
+  </div>
+</div>
+
+<ng-template #playerTemplate let-player="player">
+  <div class="player flex items-center gap-3">
+    <img [src]="player.imageUrl ?? 'match/player_image_default.svg'" />
+    {{ player.name }}
+  </div>
+</ng-template>
+
+<ng-template #scoreTemplate let-player="player">
+  <div class="score flex items-center font-normal gap-3">
+    @for (item of player.score; track item) {
+      <span class="text-gg_light_2">{{ item }}</span>
+    }
+    <div class="result font-medium">
+      @if (player.showWin) {
+        @if (player.win) {
+          W
+        } @else {
+          <span class="text-gg_light_2">L</span>
+        }
+      } @else if (player.showEndPoints) {
+        <span>{{ player.endPoints }}</span>
+      } @else {
+        <span>{{ player.scoreSum }}</span>
+      }
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #skeletonLeftContainer>
+  <div class="skeleton max-w-sm animate-pulse flex items-center w-full">
+    <div class="h-5 w-5 me-3 rounded-md bg-gg_dark_3 dark:bg-gg_dark_2"></div>
+    <div class="h-5 w-20 rounded-md bg-gg_dark_3 dark:bg-gg_dark_2"></div>
+  </div>
+  <div class="skeleton max-w-sm animate-pulse flex items-center w-full">
+    <div class="h-5 w-5 me-3 rounded-md bg-gg_dark_3 dark:bg-gg_dark_2"></div>
+    <div class="h-5 w-28 rounded-md bg-gg_dark_3 dark:bg-gg_dark_2"></div>
+  </div>
+</ng-template>
+
+<ng-template #skeletonRightContainer>
+  <div class="flex flex-col justify-between skeleton h-full animate-pulse">
+    <div class="flex items-center justify-end w-full">
+      <div class="h-3 w-10 bg-gg_dark_3 rounded-md dark:bg-gg_dark_2 me-3"></div>
+      <div class="h-5 w-5 bg-gg_dark_3 rounded-md dark:bg-gg_dark_2"></div>
+    </div>
+    <div class="flex items-center justify-end w-full">
+      <div class="h-3 w-10 bg-gg_dark_3 rounded-md dark:bg-gg_dark_2 me-3"></div>
+      <div class="h-5 w-5 bg-gg_dark_3 rounded-md dark:bg-gg_dark_2"></div>
+    </div>
+  </div>
+</ng-template>

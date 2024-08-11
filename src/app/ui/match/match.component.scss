@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  width: 360px;
+  height: 80px;
+  padding: 15px;
+  border-radius: 10px;
+
+  background: #19222d;
+
+  font-family: "FIFAnybody";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.035em;
+  text-align: left;
+}
+
+.badge-container {
+  top: -25px;
+}
+
+.date-container {
+  .time {
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 0.03em;
+  }
+  .date {
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: 0.1em;
+  }
+}

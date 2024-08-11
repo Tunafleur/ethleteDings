@@ -1,0 +1,25 @@
+<h1 class="mb-8 text-gg_purple">Ethlete Match Component</h1>
+
+<eth-match
+  class="mb-10"
+  [playerOne]="playerOne"
+  [playerTwo]="playerTwo"
+  [upcomingDateTime]="getDateMinusDays()"
+  [badges]="[Badges.VODStream]"
+></eth-match>
+
+<eth-match
+  class="mb-10"
+  [playerOne]="playerOne"
+  [playerTwo]="playerTwo"
+  [upcomingDateTime]="getDatePlusDays()"
+  [badges]="[Badges.LiveStream, Badges.Highlight]"
+></eth-match>
+
+<eth-match
+  [playerOne]="playerOne"
+  [playerTwo]="playerTwo"
+  [upcomingDateTime]="getDatePlusDays()"
+  [badges]="[Badges.LiveStream, Badges.Highlight]"
+  [loading]="true"
+></eth-match>

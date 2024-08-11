@@ -1,0 +1,928 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "Player",
+            "id": "interface-Player-5b3f9fd6bacfe8dc3af7b0bb2278730d430159cd1214d6b040184c245636576c69b31388627de3cedb56e901487048f8db48d8670f0153e8fda2f5f35d69281d",
+            "file": "src/app/ui/match/match.util.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export enum matchThemeEnum {\n  dark1,\n  dark2,\n  dark3,\n}\n\nexport enum Badges {\n  Live = 'live',\n  Highlight = 'highlight',\n  LiveStream = 'livestream',\n  VODStream = 'vodstream',\n  Stream = 'stream',\n  gameIcon = 'game',\n}\n\nexport interface Player {\n  id: string;\n  name: string;\n  imageUrl?: string;\n  score?: number[];\n  scoreSum?: number;\n  endPoints?: number;\n  win?: boolean;\n  showEndPoints?: boolean;\n  showWin?: boolean;\n}\n\nexport function getTimeFromDate(date?: Date): string | undefined {\n  if (!date) {\n    return undefined;\n  }\n\n  return date.toLocaleTimeString([], {\n    hour: '2-digit',\n    minute: '2-digit',\n    hour12: false,\n  });\n}\n\nexport function getMonthFromDate(date?: Date): string | undefined {\n  if (!date) {\n    return undefined;\n  }\n  const options: Intl.DateTimeFormatOptions = {\n    month: 'short',\n    day: '2-digit',\n  };\n  return date.toLocaleDateString('en-US', options);\n}\n\nexport function getDatePlusDays(extradays: number = 2): Date {\n  const date = new Date();\n  date.setDate(date.getDate() + extradays);\n  return date;\n}\n\nexport function getDateMinusDays(extradays: number = 2): Date {\n  const date = new Date();\n  date.setDate(date.getDate() - extradays);\n  return date;\n}\n",
+            "properties": [
+                {
+                    "name": "endPoints",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": true,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "imageUrl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "score",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number[]",
+                    "optional": true,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "scoreSum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": true,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "showEndPoints",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "showWin",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "win",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 23
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        }
+    ],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-6a9d9e9aef48dbb1dbd59bf0def9017849cab0de3b3d1a653d4e5ad8da80b5fb5989ac133e2daccecb2a4fdd0fffa515c285efcc3098a3df089becc29e07c32c",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "Badges",
+                    "defaultValue": "Badges",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "getDateMinusDays",
+                    "defaultValue": "getDateMinusDays",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "getDatePlusDays",
+                    "defaultValue": "getDatePlusDays",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "playerOne",
+                    "defaultValue": "{\n    id: '1',\n    name: 'PlayerE1ns',\n    score: [1, 2, 3, 4, 5],\n    endPoints: 100,\n    scoreSum: 15,\n    showWin: true,\n    showEndPoints: false,\n    win: true,\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Player",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "playerTwo",
+                    "defaultValue": "{\n    id: '2',\n    name: 'Player2wei',\n    score: [9, 7, 3, 2, 1],\n    endPoints: 30,\n    scoreSum: 22,\n    showWin: true,\n    showEndPoints: true,\n    win: false,\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Player",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'ethleteDings'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "MatchComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { MatchComponent } from './ui/match/match.component';\nimport { Badges, getDateMinusDays, getDatePlusDays, Player } from './ui/match/match.util';\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [RouterOutlet, MatchComponent],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss',\n})\nexport class AppComponent {\n  title = 'ethleteDings';\n  Badges = Badges;\n\n  getDateMinusDays = getDateMinusDays;\n  getDatePlusDays = getDatePlusDays;\n\n  playerOne: Player = {\n    id: '1',\n    name: 'PlayerE1ns',\n    score: [1, 2, 3, 4, 5],\n    endPoints: 100,\n    scoreSum: 15,\n    showWin: true,\n    showEndPoints: false,\n    win: true,\n  };\n\n  playerTwo: Player = {\n    id: '2',\n    name: 'Player2wei',\n    score: [9, 7, 3, 2, 1],\n    endPoints: 30,\n    scoreSum: 22,\n    showWin: true,\n    showEndPoints: true,\n    win: false,\n  };\n}\n",
+            "styleUrl": "./app.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<h1 class=\"mb-8 text-gg_purple\">Ethlete Match Component</h1>\n\n<eth-match\n  class=\"mb-10\"\n  [playerOne]=\"playerOne\"\n  [playerTwo]=\"playerTwo\"\n  [upcomingDateTime]=\"getDateMinusDays()\"\n  [badges]=\"[Badges.VODStream]\"\n></eth-match>\n\n<eth-match\n  class=\"mb-10\"\n  [playerOne]=\"playerOne\"\n  [playerTwo]=\"playerTwo\"\n  [upcomingDateTime]=\"getDatePlusDays()\"\n  [badges]=\"[Badges.LiveStream, Badges.Highlight]\"\n></eth-match>\n\n<eth-match\n  [playerOne]=\"playerOne\"\n  [playerTwo]=\"playerTwo\"\n  [upcomingDateTime]=\"getDatePlusDays()\"\n  [badges]=\"[Badges.LiveStream, Badges.Highlight]\"\n  [loading]=\"true\"\n></eth-match>\n"
+        },
+        {
+            "name": "MatchComponent",
+            "id": "component-MatchComponent-ac01f31322eab420e5d5a96747c7d67cced9e4dd398db9af06f0d3ac8ac2cd9667ce7817923173831a85b835e2d3de0f8604d3e82714eea4212e3162cbdc2a12",
+            "file": "src/app/ui/match/match.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "eth-match",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./match.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "loading",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "required": false
+                },
+                {
+                    "name": "playerOne",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "required": false
+                },
+                {
+                    "name": "playerTwo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "required": false
+                },
+                {
+                    "name": "theme",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "required": false
+                },
+                {
+                    "name": "upcomingDateTime",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "required": false
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "badges",
+                    "defaultValue": "input<Badges[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "getMonthFromDate",
+                    "defaultValue": "getMonthFromDate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "getTimeFromDate",
+                    "defaultValue": "getTimeFromDate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "loading",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "required": false
+                },
+                {
+                    "name": "pastMatch",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Signal<boolean>",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "playerOne",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "required": false
+                },
+                {
+                    "name": "playerTwo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "required": false
+                },
+                {
+                    "name": "theme",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "required": false
+                },
+                {
+                    "name": "upcomingDateTime",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "required": false
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, computed, input, Signal } from '@angular/core';\nimport { Badges, getMonthFromDate, getTimeFromDate, matchThemeEnum, Player } from './match.util';\n\n@Component({\n  selector: 'eth-match',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './match.component.html',\n  styleUrl: './match.component.scss',\n})\nexport class MatchComponent {\n  playerOne = input<Player>();\n  playerTwo = input<Player>();\n  upcomingDateTime = input<Date>();\n  loading = input<boolean>();\n  theme = input<matchThemeEnum>();\n  badges = input<Badges[]>();\n\n  getTimeFromDate = getTimeFromDate;\n  getMonthFromDate = getMonthFromDate;\n\n  pastMatch: Signal<boolean>;\n\n  constructor() {\n    this.pastMatch = computed(() => {\n      return this.upcomingDateTime() ? this.upcomingDateTime()! < new Date() : false;\n    });\n  }\n}\n",
+            "styleUrl": "./match.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 23
+            },
+            "extends": [],
+            "templateData": "<div class=\"match-container flex justify-between w-full relative text-gg_white\">\n  <div class=\"match-container--left\">\n    <div class=\"player-container flex flex-col h-full justify-between\">\n      @if (loading()) {\n        <ng-container *ngTemplateOutlet=\"skeletonLeftContainer\"></ng-container>\n      } @else {\n        <div class=\"badge-container absolute flex content-evenly gap-2\">\n          @for (badge of badges(); track badge) {\n            <img [src]=\"'match/badges/badge_' + badge + '.svg'\" />\n          }\n        </div>\n        <ng-container *ngTemplateOutlet=\"playerTemplate; context: { player: playerOne() }\"></ng-container>\n        <ng-container *ngTemplateOutlet=\"playerTemplate; context: { player: playerTwo() }\"></ng-container>\n      }\n    </div>\n  </div>\n  <div class=\"match-container--right\">\n    <div\n      class=\"flex flex-col h-full text-right\"\n      [ngClass]=\"pastMatch() ? 'score-container justify-between' : 'date-container'\"\n    >\n      @if (loading()) {\n        <ng-container *ngTemplateOutlet=\"skeletonRightContainer\"></ng-container>\n      } @else {\n        @if (pastMatch()) {\n          <ng-container *ngTemplateOutlet=\"scoreTemplate; context: { player: playerOne() }\"></ng-container>\n          <ng-container *ngTemplateOutlet=\"scoreTemplate; context: { player: playerTwo() }\"></ng-container>\n        } @else {\n          <div class=\"time font-semibold\">\n            {{ getTimeFromDate(upcomingDateTime()) }}\n          </div>\n          <div class=\"date flex flex-col flex-1 justify-center font-bold text-gg_light_3\">\n            {{ getMonthFromDate(upcomingDateTime()) }}\n          </div>\n        }\n      }\n    </div>\n  </div>\n</div>\n\n<ng-template #playerTemplate let-player=\"player\">\n  <div class=\"player flex items-center gap-3\">\n    <img [src]=\"player.imageUrl ?? 'match/player_image_default.svg'\" />\n    {{ player.name }}\n  </div>\n</ng-template>\n\n<ng-template #scoreTemplate let-player=\"player\">\n  <div class=\"score flex items-center font-normal gap-3\">\n    @for (item of player.score; track item) {\n      <span class=\"text-gg_light_2\">{{ item }}</span>\n    }\n    <div class=\"result font-medium\">\n      @if (player.showWin) {\n        @if (player.win) {\n          W\n        } @else {\n          <span class=\"text-gg_light_2\">L</span>\n        }\n      } @else if (player.showEndPoints) {\n        <span>{{ player.endPoints }}</span>\n      } @else {\n        <span>{{ player.scoreSum }}</span>\n      }\n    </div>\n  </div>\n</ng-template>\n\n<ng-template #skeletonLeftContainer>\n  <div class=\"skeleton max-w-sm animate-pulse flex items-center w-full\">\n    <div class=\"h-5 w-5 me-3 rounded-md bg-gg_dark_3 dark:bg-gg_dark_2\"></div>\n    <div class=\"h-5 w-20 rounded-md bg-gg_dark_3 dark:bg-gg_dark_2\"></div>\n  </div>\n  <div class=\"skeleton max-w-sm animate-pulse flex items-center w-full\">\n    <div class=\"h-5 w-5 me-3 rounded-md bg-gg_dark_3 dark:bg-gg_dark_2\"></div>\n    <div class=\"h-5 w-28 rounded-md bg-gg_dark_3 dark:bg-gg_dark_2\"></div>\n  </div>\n</ng-template>\n\n<ng-template #skeletonRightContainer>\n  <div class=\"flex flex-col justify-between skeleton h-full animate-pulse\">\n    <div class=\"flex items-center justify-end w-full\">\n      <div class=\"h-3 w-10 bg-gg_dark_3 rounded-md dark:bg-gg_dark_2 me-3\"></div>\n      <div class=\"h-5 w-5 bg-gg_dark_3 rounded-md dark:bg-gg_dark_2\"></div>\n    </div>\n    <div class=\"flex items-center justify-end w-full\">\n      <div class=\"h-3 w-10 bg-gg_dark_3 rounded-md dark:bg-gg_dark_2 me-3\"></div>\n      <div class=\"h-5 w-5 bg-gg_dark_3 rounded-md dark:bg-gg_dark_2\"></div>\n    </div>\n  </div>\n</ng-template>\n"
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "appConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\n  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]\n}"
+            }
+        ],
+        "functions": [
+            {
+                "name": "getDateMinusDays",
+                "file": "src/app/ui/match/match.util.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "extradays",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "2"
+                    }
+                ],
+                "returnType": "Date",
+                "jsdoctags": [
+                    {
+                        "name": "extradays",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "getDatePlusDays",
+                "file": "src/app/ui/match/match.util.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "extradays",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "2"
+                    }
+                ],
+                "returnType": "Date",
+                "jsdoctags": [
+                    {
+                        "name": "extradays",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "getMonthFromDate",
+                "file": "src/app/ui/match/match.util.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "date",
+                        "type": "Date",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    }
+                ],
+                "returnType": "string | undefined",
+                "jsdoctags": [
+                    {
+                        "name": "date",
+                        "type": "Date",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "getTimeFromDate",
+                "file": "src/app/ui/match/match.util.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "date",
+                        "type": "Date",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    }
+                ],
+                "returnType": "string | undefined",
+                "jsdoctags": [
+                    {
+                        "name": "date",
+                        "type": "Date",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typealiases": [],
+        "enumerations": [
+            {
+                "name": "Badges",
+                "childs": [
+                    {
+                        "name": "Live",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "live"
+                    },
+                    {
+                        "name": "Highlight",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "highlight"
+                    },
+                    {
+                        "name": "LiveStream",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "livestream"
+                    },
+                    {
+                        "name": "VODStream",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "vodstream"
+                    },
+                    {
+                        "name": "Stream",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "stream"
+                    },
+                    {
+                        "name": "gameIcon",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "game"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/ui/match/match.util.ts"
+            },
+            {
+                "name": "matchThemeEnum",
+                "childs": [
+                    {
+                        "name": "dark1",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "dark2",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "dark3",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/ui/match/match.util.ts"
+            }
+        ],
+        "groupedVariables": {
+            "src/app/app.config.ts": [
+                {
+                    "name": "appConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\n  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {
+            "src/app/ui/match/match.util.ts": [
+                {
+                    "name": "getDateMinusDays",
+                    "file": "src/app/ui/match/match.util.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "extradays",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "2"
+                        }
+                    ],
+                    "returnType": "Date",
+                    "jsdoctags": [
+                        {
+                            "name": "extradays",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "2",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getDatePlusDays",
+                    "file": "src/app/ui/match/match.util.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "extradays",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "2"
+                        }
+                    ],
+                    "returnType": "Date",
+                    "jsdoctags": [
+                        {
+                            "name": "extradays",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "2",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getMonthFromDate",
+                    "file": "src/app/ui/match/match.util.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "date",
+                            "type": "Date",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "returnType": "string | undefined",
+                    "jsdoctags": [
+                        {
+                            "name": "date",
+                            "type": "Date",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getTimeFromDate",
+                    "file": "src/app/ui/match/match.util.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "date",
+                            "type": "Date",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "returnType": "string | undefined",
+                    "jsdoctags": [
+                        {
+                            "name": "date",
+                            "type": "Date",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "groupedEnumerations": {
+            "src/app/ui/match/match.util.ts": [
+                {
+                    "name": "Badges",
+                    "childs": [
+                        {
+                            "name": "Live",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "live"
+                        },
+                        {
+                            "name": "Highlight",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "highlight"
+                        },
+                        {
+                            "name": "LiveStream",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "livestream"
+                        },
+                        {
+                            "name": "VODStream",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "vodstream"
+                        },
+                        {
+                            "name": "Stream",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "stream"
+                        },
+                        {
+                            "name": "gameIcon",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "game"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/ui/match/match.util.ts"
+                },
+                {
+                    "name": "matchThemeEnum",
+                    "childs": [
+                        {
+                            "name": "dark1",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "dark2",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "dark3",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/ui/match/match.util.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/match/match.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MatchComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/16",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/match/match.util.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Player",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/match/match.util.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "getDateMinusDays",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/match/match.util.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "getDatePlusDays",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/match/match.util.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "getMonthFromDate",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/match/match.util.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "getTimeFromDate",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}
